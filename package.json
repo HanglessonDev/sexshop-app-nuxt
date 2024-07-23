@@ -1,0 +1,155 @@
+{
+  "name": "nuxt-styled-template",
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write . --log-level warn",
+    "commit": "node ./node_modules/cz-customizable/standalone.js",
+    "test": "vitest",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.3.13",
+    "@nuxt/test-utils": "^3.13.1",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@nuxtjs/tailwindcss": "6.8.0",
+    "@primevue/nuxt-module": "^4.0.0-rc.3",
+    "@vue/test-utils": "^2.4.6",
+    "cz-customizable": "^7.2.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "happy-dom": "^14.12.3",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "nuxt": "^3.12.1",
+    "playwright-core": "^1.45.2",
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "vitest": "^2.0.3",
+    "vue-router": "^4.2.5"
+  },
+  "dependencies": {
+    "@primevue/themes": "^4.0.0-rc.3",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.0.0-rc.3"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown --log-level warn",
+    "*.{js,ts,vue}": "eslint --fix"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "feat",
+          "fix",
+          "docs",
+          "style",
+          "refactor",
+          "perf",
+          "test",
+          "chore",
+          "revert",
+          "build",
+          "ci",
+          "security",
+          "deps",
+          "config"
+        ]
+      ],
+      "scope-enum": [
+        2,
+        "always",
+        [
+          "api",
+          "frontend",
+          "backend",
+          "infra",
+          "db",
+          "auth",
+          "config",
+          "docs",
+          "tests",
+          "build",
+          "ci",
+          "localization",
+          "i18n",
+          "devops"
+        ]
+      ]
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "parser": "vue-eslint-parser",
+    "parserOptions": {
+      "parser": "@typescript-eslint/parser"
+    },
+    "extends": [
+      "eslint:recommended",
+      "@nuxt/eslint-config",
+      "plugin:nuxt/recommended",
+      "plugin:vue/vue3-recommended",
+      "plugin:prettier/recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "eslint-plugin-nuxt"
+    ],
+    "rules": {
+      "vue/multi-word-component-names": "off",
+      "eslint-plugin-vue/no-multiple-template-root": "off",
+      "prettier/prettier": [
+        "warn"
+      ],
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "endOfLine": "lf",
+    "arrowParens": "always",
+    "vueIndentScriptAndStyle": true,
+    "htmlWhitespaceSensitivity": "strict",
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ],
+    "overrides": [
+      {
+        "files": "*.vue",
+        "options": {
+          "parser": "vue"
+        }
+      }
+    ]
+  },
+  "config": {
+    "cz-customizable": {
+      "config": "./cz-config.cjs"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Verificando a mensagem do commit..."
+
+if npx --no -- commitlint --edit ${1}; then
+    echo "✅ Mensagem do commit válida. Prosseguindo com o commit..."
+else
+    echo "❌ A mensagem do commit não segue as convenções estabelecidas."
+    echo "📘 Por favor, revise as regras do commitlint e tente novamente."
+    exit 1
+fi

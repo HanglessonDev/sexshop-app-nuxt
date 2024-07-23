@@ -1,0 +1,43 @@
+{
+  // "eslint.experimental.useFlatConfig": true,
+  // [Reconhecer diretivas Tailwind]
+  "css.customData": [".vscode/tailwind.json"],
+  // [Editor]
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Formatação de acordo com o Prettier
+  "files.eol": "\n",
+  // [Scss Lint]
+  "scss.lint.unknownAtRules": "ignore",
+  // [Prettier]
+  // "prettier.configPath": "./.prettierrc.cjs",
+  "prettier.useEditorConfig": false,
+  // [Eslint]
+  "eslint.format.enable": true,
+  // [Conventional Commits]
+  "conventionalCommits.scopes": [
+    "config",
+    "docs",
+    "ui",
+    "auth",
+    "api",
+    "store",
+    "admin",
+    "cart",
+    "product",
+    "layout",
+    "test"
+  ],
+  // [Todo+]
+  "todo.file.name": "TODO",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

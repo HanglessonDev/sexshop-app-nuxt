@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Iniciando verificações pré-commit..."
+
+echo "📝 Executando lint..."
+if ! pnpm lint-staged --quiet -- "*.{js,ts,vue}"; then
+    echo "❌ Lint falhou. Corrija os erros e tente novamente."
+    exit 1
+fi
+
+echo "🎨 Executando formatação..."
+if ! pnpm lint-staged --quiet -- "*"; then
+    echo "❌ Formatação falhou. Verifique as alterações e tente novamente."
+    exit 1
+fi
+
+echo "✅ Verificações pré-commit concluídas com sucesso."
+
