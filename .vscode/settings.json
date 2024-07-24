@@ -15,27 +15,68 @@
   "prettier.useEditorConfig": false,
   // [Eslint]
   "eslint.format.enable": true,
-  // [Conventional Commits]
-  "conventionalCommits.scopes": [
-    "config",
-    "docs",
-    "ui",
-    "auth",
-    "api",
-    "store",
-    "admin",
-    "cart",
-    "product",
-    "layout",
-    "test"
-  ],
+  // [Todo Tree]
+  "todo-tree.general.tags": ["TODO", "FIXME", "BUG", "HACK", "NOTE", "REVIEW"],
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "#ffffff",
+    "background": "#ffb86c",
+    "icon": "check",
+    "type": "text"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "background": "#8BE9FD",
+      "foreground": "#000",
+      "icon": "checklist",
+      "iconColour": "#8BE9FD",
+      "gutterIcon": true
+    },
+    "FIXME": {
+      "background": "#ff79c6",
+      "foreground": "#000",
+      "icon": "tools",
+      "iconColour": "#ff79c6",
+      "gutterIcon": true
+    },
+    "BUG": {
+      "background": "#ff5555",
+      "foreground": "#000",
+      "icon": "bug",
+      "iconColour": "#ff5555",
+      "gutterIcon": true
+    },
+    "HACK": {
+      "background": "#50fa7b",
+      "foreground": "#000",
+      "icon": "flame",
+      "iconColour": "#50fa7b",
+      "gutterIcon": true
+    },
+    "NOTE": {
+      "background": "#bd93f9",
+      "foreground": "#000",
+      "icon": "note",
+      "iconColour": "#bd93f9",
+      "gutterIcon": true
+    },
+    "REVIEW": {
+      "background": "#f1fa8c",
+      "foreground": "#000",
+      "icon": "eye",
+      "iconColour": "#f1fa8c",
+      "gutterIcon": true
+    }
+  },
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.showBadges": true,
   // [Todo+]
   "todo.file.name": "TODO",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2
   },
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
