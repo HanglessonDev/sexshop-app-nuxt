@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: store-app-nuxt-postgres
+    environment:
+      POSTGRES_DB: store_app_nuxt
+      POSTGRES_USER: store_user
+      POSTGRES_PASSWORD: store_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
