@@ -2,14 +2,26 @@
 import Nora from '@primevue/themes/nora'
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: { enabled: true },
+  ssr: false,
   modules: [
     '@nuxtjs/tailwindcss',
     '@primevue/nuxt-module',
     '@nuxtjs/eslint-module',
     '@nuxt/test-utils/module',
+    '@nuxtjs/supabase',
   ],
-
+  eslint: {
+    lintOnStart: false,
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      include: undefined,
+      exclude: ['/', '/registro'],
+    },
+  },
   primevue: {
     options: {
       theme: {
@@ -25,6 +37,5 @@ export default defineNuxtConfig({
     },
     autoImport: true,
   },
-
   compatibilityDate: '2024-07-16',
 })
