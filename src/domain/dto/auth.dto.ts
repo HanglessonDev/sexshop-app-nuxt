@@ -11,8 +11,10 @@ export interface LoginDTO {
   password: string
 }
 
-export interface SessinDTO {
+export interface SessionDTO {
   accessToken: string
   refreshToken: string
+  expiresAt: number
+  expiresIn: number
   user: User
 }
