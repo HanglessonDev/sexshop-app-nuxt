@@ -2,27 +2,29 @@
   definePageMeta({
     middleware: ['auth'],
   })
-  const { register } = useAuth()
+
+  const { login, error } = useAuth()
+
   const form = ref({
     email: '',
     password: '',
-    role: 'client',
   })
 
-  const handleRegister = async () => {
-    await register(form.value)
+  const handleLogin = async () => {
+    await login(form.value)
   }
 </script>
 
 <template>
-  <div class="grid w-full grid-cols-2">
-    <Card class="card-register">
+  <div class="flex w-full flex-col justify-center border">
+    <div>{{ error }}</div>
+    <Card class="card-login">
       <template #title>
-        <h3 class="card-register__title"> Registro </h3>
+        <h3 class="card-login__title"> Login </h3>
       </template>
       <template #content>
-        <form class="card-register__form" action="" @submit.prevent="handleRegister">
-          <div class="card-register__form-group">
+        <form class="card-login__form" @submit.prevent="handleLogin">
+          <div class="card-login__form-group">
             <InputText
               id="email"
               v-model="form.email"
@@ -42,11 +44,8 @@
               class="w-full"
               placeholder="Senha"
             />
-            <small id="password-help" class="invisible text-red-500">
-              Enter your username to reset your password.
-            </small>
           </div>
-          <Button type="submit" class="w-full font-bold uppercase">Criar nova conta</Button>
+          <Button type="submit" label="Entrar" class="w-full" />
         </form>
       </template>
     </Card>
@@ -54,7 +53,7 @@
 </template>
 
 <style scoped>
-  .card-register {
+  .card-login {
     @apply mx-auto h-fit max-w-md self-center;
 
     &__title {
