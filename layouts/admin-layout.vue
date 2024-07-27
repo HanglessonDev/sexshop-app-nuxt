@@ -36,12 +36,12 @@
         {
           label: 'Listar',
           icon: 'pi pi-fw pi-list',
-          route: '/categorias',
+          route: 'admin/categorias',
         },
         {
           label: 'Cadastrar',
           icon: 'pi pi-fw pi-plus',
-          route: '/categorias/cadastro',
+          route: 'admin/categorias/cadastro',
         },
         {
           separator: true,
