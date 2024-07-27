@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  const user = useSupabaseUser()
   const menus = [
     {
       label: 'Dashboard',
@@ -84,6 +83,7 @@
 
 <template>
   <div class="flex h-screen w-full flex-col">
+    <Toast position="bottom-center" />
     <Menubar :model="menus">
       <template #item="{ item, props, hasSubmenu }">
         <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
@@ -100,7 +100,7 @@
       </template>
       <template #end>
         <div class="flex items-center gap-2">
-          <span class="text-sm">{{ user?.email }}</span>
+          <Button text icon="pi pi-user" label="Meu Perfil" class="rounded" />
           <Button label="Sair" text icon="pi pi-sign-out" class="rounded" @click="logout" />
         </div>
       </template>
