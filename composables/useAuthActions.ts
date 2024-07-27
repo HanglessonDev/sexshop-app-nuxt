@@ -2,10 +2,8 @@ import { AuthGatewaySupabase } from '~/src/data/auth.gateway.supabase'
 import { LoginUseCase } from '~/src/usecases/auth/login.usecase'
 import { LogoutUseCase } from '~/src/usecases/auth/logout.usecase'
 import { RegisterUseCase } from '~/src/usecases/auth/register.usecase'
-import { useAuthCookies } from './useAuthCookies'
-import { useAuthState } from './useAuthState'
-import type { LoginDTO, RegisterDTO } from '~/src/domain/dto/auth.dto'
 import { RenewSessionUseCase } from '~/src/usecases/auth/renew-session.usecase'
+import type { LoginDTO, RegisterDTO } from '~/src/domain/dto/auth.dto'
 
 export const useAuthActions = () => {
   const router = useRouter()
@@ -16,7 +14,7 @@ export const useAuthActions = () => {
   const logoutUseCase = LogoutUseCase.create(authGateway)
   const renewSessionUseCase = RenewSessionUseCase.create(authGateway)
 
-  const { user, session, error } = useAuthState()
+  const { user, session, error, isLoggedIn } = useAuthState()
   const { loadSessionFromCookie, saveSessionToCookie, clearCookies } = useAuthCookies()
 
   loadSessionFromCookie(session, user)
@@ -97,5 +95,5 @@ export const useAuthActions = () => {
     5 * 60 * 1000
   )
 
-  return { register, login, logout }
+  return { register, login, logout, isLoggedIn, user, session, error }
 }
