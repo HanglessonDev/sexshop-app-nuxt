@@ -1,4 +1,4 @@
-import type { RegisterDTO, LoginDTO, SessinDTO } from '../domain/dto/auth.dto'
+import type { RegisterDTO, LoginDTO, SessionDTO } from '../domain/dto/auth.dto'
 import type {
   SupabaseClient,
   User as SupabaseUser,
@@ -21,10 +21,12 @@ export class AuthGatewaySupabase implements AuthGateway {
     }
   }
 
-  private mapSession(supabaseSession: SupabaseSession, user: SupabaseUser): SessinDTO {
+  private mapSession(supabaseSession: SupabaseSession, user: SupabaseUser): SessionDTO {
     return {
       accessToken: supabaseSession.access_token ?? '',
       refreshToken: supabaseSession.refresh_token ?? '',
+      expiresAt: supabaseSession.expires_at ?? 0,
+      expiresIn: supabaseSession.expires_in ?? 0,
       user: this.mapUser(user),
     }
   }
@@ -43,7 +45,7 @@ export class AuthGatewaySupabase implements AuthGateway {
 
     return this.mapUser(response.user)
   }
-  public async login(data: LoginDTO): Promise<SessinDTO | null> {
+  public async login(data: LoginDTO): Promise<SessionDTO | null> {
     const { email, password } = data
 
     const { data: response, error } = await this.supabase.auth.signInWithPassword({
@@ -61,5 +63,17 @@ export class AuthGatewaySupabase implements AuthGateway {
   public async logout(): Promise<void> {
     const { error } = await this.supabase.auth.signOut()
     if (error) throw error
+  }
+
+  public async renewSession(): Promise<SessionDTO | null> {
+    const {
+      data: { session: newSession },
+      error,
+    } = await this.supabase.auth.refreshSession()
+
+    if (error) throw error
+    if (!newSession?.user) throw new Error('Session refresh failed')
+
+    return this.mapSession(newSession, newSession.user)
   }
 }
