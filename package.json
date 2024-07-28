@@ -44,8 +44,11 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.0-rc.3",
+    "@vee-validate/nuxt": "^4.13.2",
+    "@vee-validate/zod": "^4.13.2",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.0-rc.3"
+    "primevue": "^4.0.0-rc.3",
+    "zod": "^3.23.8"
   },
   "lint-staged": {
     "*": "prettier --write --ignore-unknown --log-level warn",
