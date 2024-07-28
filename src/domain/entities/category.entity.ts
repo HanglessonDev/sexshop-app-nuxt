@@ -4,7 +4,7 @@ export interface Category {
   slug: string
   description: string
   imageUrl: string
-  parentId: string
+  parentId: number
   isActive: boolean
   visibility: boolean
   sortOrder: number

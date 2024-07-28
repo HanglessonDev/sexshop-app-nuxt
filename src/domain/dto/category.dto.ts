@@ -3,7 +3,7 @@ export interface CreateCategoryDTO {
   slug: string
   description: string
   imageUrl: string | null
-  parentId: string | null
+  parentId: number | null
   isActive: boolean
   visibility: boolean
   sortOrder: number
@@ -17,7 +17,7 @@ export interface UpdateCategoryDTO {
   slug: string
   description: string
   imageUrl: string
-  parentId: string
+  parentId: number
   isActive: boolean
   visibility: boolean
   sortOrder: number
