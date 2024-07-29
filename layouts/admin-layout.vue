@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  const { width } = useWindowSize()
+
   const menus = [
     {
       label: 'Dashboard',
@@ -83,7 +85,7 @@
 
 <template>
   <div class="flex h-screen w-full flex-col">
-    <Toast position="bottom-center" />
+    <Toast :position="width < 768 ? 'bottom-center' : 'top-right'" />
     <Menubar :model="menus">
       <template #item="{ item, props, hasSubmenu }">
         <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
