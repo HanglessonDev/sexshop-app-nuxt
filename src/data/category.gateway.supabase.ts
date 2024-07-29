@@ -16,13 +16,8 @@ export class CategoryGatewaySupabase implements CategoryGateway {
       name: supabaseCategory.name,
       slug: supabaseCategory.slug,
       description: supabaseCategory.description,
-      imageUrl: supabaseCategory.image_url,
-      parentId: supabaseCategory.parent_id,
       isActive: supabaseCategory.is_active,
       visibility: supabaseCategory.visibility,
-      sortOrder: supabaseCategory.sort_order,
-      metaTitle: supabaseCategory.meta_title,
-      metaDescription: supabaseCategory.meta_description,
       createdAt: supabaseCategory.created_at,
       createdBy: supabaseCategory.created_by,
       updatedAt: supabaseCategory.updated_at,
@@ -31,19 +26,7 @@ export class CategoryGatewaySupabase implements CategoryGateway {
   }
 
   public async save(data: CreateCategoryDTO): Promise<Category> {
-    const {
-      name,
-      slug,
-      description,
-      imageUrl,
-      parentId,
-      isActive,
-      visibility,
-      sortOrder,
-      metaTitle,
-      metaDescription,
-      createdBy,
-    } = data
+    const { name, slug, description, isActive, visibility, createdBy } = data
 
     const { data: response, error } = await this.supabase
       .from('categories')
@@ -51,13 +34,8 @@ export class CategoryGatewaySupabase implements CategoryGateway {
         name,
         slug,
         description,
-        image_url: imageUrl,
-        parent_id: parentId,
         is_active: isActive,
         visibility,
-        sort_order: sortOrder,
-        meta_title: metaTitle,
-        meta_description: metaDescription,
         created_by: createdBy,
       })
       .select()
@@ -65,9 +43,6 @@ export class CategoryGatewaySupabase implements CategoryGateway {
 
     if (error) throw error
     if (!response) throw new Error('Category creation failed')
-
-    console.log('mthod save response', response)
-
     return this.mapCategory(response)
   }
 
