@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@vee-validate/nuxt',
     '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
   ],
   veeValidate: {
     autoImports: true,
