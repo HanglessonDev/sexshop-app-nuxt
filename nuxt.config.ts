@@ -10,7 +10,25 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxt/test-utils/module',
     '@nuxtjs/supabase',
+    '@vee-validate/nuxt',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
   ],
+  veeValidate: {
+    autoImports: true,
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  },
+  tailwindcss: {
+    configPath: './tailwind.config',
+    viewer: true,
+    exposeConfig: true,
+  },
   eslint: {
     lintOnStart: false,
   },
