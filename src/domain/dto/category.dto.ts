@@ -19,6 +19,12 @@ export interface UpdateCategoryDTO {
 
 export type UpdateCategoryOutputDTO = void
 
+export interface RemoveCategoryInputDTO {
+  id: number
+}
+
+export type RemoveCategoryOutputDTO = void
+
 export interface CategoryDTO {
   id: number
   name: string

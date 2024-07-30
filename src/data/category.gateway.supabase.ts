@@ -1,4 +1,8 @@
-import type { CreateCategoryDTO, UpdateCategoryDTO } from '../domain/dto/category.dto'
+import type {
+  CreateCategoryDTO,
+  RemoveCategoryInputDTO,
+  UpdateCategoryDTO,
+} from '../domain/dto/category.dto'
 import type { Category } from '../domain/entities/category.entity'
 import type { CategoryGateway } from '../domain/gateways/category.gateway'
 import type { SupabaseClient } from '@supabase/supabase-js'
@@ -69,6 +73,11 @@ export class CategoryGatewaySupabase implements CategoryGateway {
         updated_by: updatedBy,
       })
       .eq('id', id)
+    if (error) throw error
+  }
+
+  public async remove(id: RemoveCategoryInputDTO): Promise<void> {
+    const { error } = await this.supabase.from('categories').delete().eq('id', id)
     if (error) throw error
   }
 }
