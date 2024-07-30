@@ -8,6 +8,7 @@ export interface CreateCategoryDTO {
 }
 
 export interface UpdateCategoryDTO {
+  id: number
   name: string
   slug: string
   description: string
@@ -15,6 +16,8 @@ export interface UpdateCategoryDTO {
   visibility: boolean
   updatedBy: string
 }
+
+export type UpdateCategoryOutputDTO = void
 
 export interface CategoryDTO {
   id: number
