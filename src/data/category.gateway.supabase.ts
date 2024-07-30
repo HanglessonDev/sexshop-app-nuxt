@@ -1,4 +1,4 @@
-import type { CreateCategoryDTO } from '../domain/dto/category.dto'
+import type { CreateCategoryDTO, UpdateCategoryDTO } from '../domain/dto/category.dto'
 import type { Category } from '../domain/entities/category.entity'
 import type { CategoryGateway } from '../domain/gateways/category.gateway'
 import type { SupabaseClient } from '@supabase/supabase-js'
@@ -53,5 +53,22 @@ export class CategoryGatewaySupabase implements CategoryGateway {
     if (!response) throw new Error('Category list failed')
 
     return response.map(this.mapCategory)
+  }
+
+  public async update(category: UpdateCategoryDTO): Promise<void> {
+    const { id, name, slug, description, isActive, visibility, updatedBy } = category
+
+    const { error } = await this.supabase
+      .from('categories')
+      .update({
+        name,
+        slug,
+        description,
+        is_active: isActive,
+        visibility,
+        updated_by: updatedBy,
+      })
+      .eq('id', id)
+    if (error) throw error
   }
 }

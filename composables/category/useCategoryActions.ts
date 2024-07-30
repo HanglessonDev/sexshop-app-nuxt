@@ -1,14 +1,20 @@
 import { CategoryGatewaySupabase } from '~/src/data/category.gateway.supabase'
-import type { CategoryDTO, CreateCategoryDTO } from '~/src/domain/dto/category.dto'
+import type {
+  CategoryDTO,
+  CreateCategoryDTO,
+  UpdateCategoryDTO,
+} from '~/src/domain/dto/category.dto'
 import type { Category } from '~/src/domain/entities/category.entity'
 import { ListCategoryUseCase } from '~/src/usecases/category/list.usecase'
 import { SaveCategoryUseCase } from '~/src/usecases/category/save.usecase'
+import { UpdateCategoryUseCase } from '~/src/usecases/category/update.usecase'
 
 export const useCategoryActions = () => {
   const supabaseClient = useSupabaseClient()
   const categoryGateway = CategoryGatewaySupabase.create(supabaseClient)
   const saveCategoryUseCase = SaveCategoryUseCase.create(categoryGateway)
   const listCategoryUseCase = ListCategoryUseCase.create(categoryGateway)
+  const updateCategoryUseCase = UpdateCategoryUseCase.create(categoryGateway)
 
   const save = async (data: CreateCategoryDTO): Promise<Category | null> => {
     try {
@@ -26,8 +32,17 @@ export const useCategoryActions = () => {
     }
   }
 
+  const update = async (data: UpdateCategoryDTO): Promise<void> => {
+    try {
+      return await updateCategoryUseCase.execute(data)
+    } catch (err) {
+      throw err instanceof Error ? err.message : 'Unknown error'
+    }
+  }
+
   return {
     save,
     list,
+    update,
   }
 }
