@@ -10,74 +10,22 @@
     {
       label: 'Produtos',
       icon: 'pi pi-fw pi-shopping-bag',
-      items: [
-        {
-          label: 'Listar',
-          icon: 'pi pi-fw pi-list',
-          route: '/produtos',
-        },
-        {
-          label: 'Cadastrar',
-          icon: 'pi pi-fw pi-plus',
-          route: '/produtos/cadastro',
-        },
-        {
-          separator: true,
-        },
-        {
-          label: 'Relatorio',
-          icon: 'pi pi-fw pi-file',
-          route: '/categorias',
-        },
-      ],
+      route: '/admin/produtos',
     },
     {
       label: 'Categorias',
       icon: 'pi pi-fw pi-list',
-      items: [
-        {
-          label: 'Listar',
-          icon: 'pi pi-fw pi-list',
-          route: 'admin/categorias',
-        },
-        {
-          label: 'Cadastrar',
-          icon: 'pi pi-fw pi-plus',
-          route: 'admin/categorias/cadastro',
-        },
-        {
-          separator: true,
-        },
-        {
-          label: 'Relatorio',
-          icon: 'pi pi-fw pi-file',
-          route: '/categorias',
-        },
-      ],
+      route: '/admin/categorias',
+    },
+    {
+      label: 'Tags',
+      icon: 'pi pi-fw pi-tags',
+      route: '/admin/tags',
     },
     {
       label: 'Pedidos',
       icon: 'pi pi-fw pi-shopping-cart',
-      items: [
-        {
-          label: 'Listar',
-          icon: 'pi pi-fw pi-list',
-          route: '/pedidos',
-        },
-        {
-          label: 'Cadastrar',
-          icon: 'pi pi-fw pi-plus',
-          route: '/pedidos/cadastro',
-        },
-        {
-          separator: true,
-        },
-        {
-          label: 'Relatorio',
-          icon: 'pi pi-fw pi-file',
-          route: '/pedidos',
-        },
-      ],
+      route: '/admin/pedidos',
     },
   ]
   const { logout } = useAuth()
