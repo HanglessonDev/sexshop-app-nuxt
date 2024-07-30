@@ -1,5 +1,6 @@
 import { z } from 'zod'
 
+export const idSchema = z.number().positive('Id inválido')
 export const nameSchema = z
   .string()
   .min(3, 'O Nome deve ter pelo menos 3 caracteres')
@@ -23,6 +24,7 @@ export const CreateCategorySchema = z.object({
 })
 
 export const UpdateCategorySchema = z.object({
+  id: idSchema,
   name: nameSchema.optional(),
   slug: slugSchema.optional(),
   description: descriptionSchema.optional(),
