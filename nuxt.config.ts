@@ -25,9 +25,7 @@ export default defineNuxtConfig({
     },
   },
   tailwindcss: {
-    config: {
-      content: ['./components/**/*.{js,vue,ts}', './layouts/**/*.vue', './pages/**/*.vue'],
-    },
+    configPath: './tailwind.config',
     viewer: true,
     exposeConfig: true,
   },
