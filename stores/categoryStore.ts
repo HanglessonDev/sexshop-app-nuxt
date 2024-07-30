@@ -28,7 +28,8 @@ export const useCategoryStore = defineStore(
       loading.value = true
       error.value = null
       try {
-        categories.value = await list()
+        const result = await list()
+        categories.value = result ? result.sort((a, b) => a.id - b.id) : []
       } catch (err) {
         error.value = err instanceof Error ? err.message : 'Unknown error'
         categories.value = []
